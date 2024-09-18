@@ -30,6 +30,8 @@
     <script>
         !function (p) { "use strict"; !function (t) { var s = window, e = document, i = p, c = "".concat("https:" === e.location.protocol ? "https://" : "http://", "sdk.51.la/js-sdk-pro.min.js"), n = e.createElement("script"), r = e.getElementsByTagName("script")[0]; n.type = "text/javascript", n.setAttribute("charset", "UTF-8"), n.async = !0, n.src = c, n.id = "LA_COLLECT", i.d = n; var o = function () { s.LA.ids.push(i) }; s.LA ? s.LA.ids && o() : (s.LA = p, s.LA.ids = [], o()), r.parentNode.insertBefore(n, r) }() }({ id: "JuSxXIvOMGPBMkpo", ck: "JuSxXIvOMGPBMkpo" });
     </script>
+    <script src="js/translations.js"></script>
+    <script src="js/language-switch.js"></script>
 </head>
 
 <body>
@@ -37,13 +39,14 @@
         <div class="container-fluid d-flex align-items-center">
             <h1 class="d-flex align-items-center fs-4 text-white mb-0">
                 <img src="imgs/logo.svg" width="38" height="30" class="me-3" alt="Web Serial">
-                Web Serial Debug
+                <span data-translate="Web Serial Debug">Web Serial Debug</span>
             </h1>
             <span class="ms-auto">
-                <span class="link-light">代码已开源:</span>
-                <a href="https://github.com/itldg/web-serial-debug" target="_blank" class="link-light">Github</a>
-                <a href="https://gitee.com/itldg/web-serial-debug" target="_blank" class="link-light">Gitee</a>
-                <a href="javascript:hideTop()" class="link-light ml-2">隐藏头部</a>
+                <a href="javascript:hideTop()" class="link-light ml-2" data-translate="Hide header">隐藏头部</a>
+                <span class="mx-2"></span>
+                <a href="#" target="_blank" class="link-light">Github</a>
+                <span class="mx-2"></span>
+                <button class="btn btn-sm btn-outline-secondary" id="language-switch-button" onclick="switchLanguage()">English</button>
             </span>
         </div>
     </header>
@@ -51,95 +54,7 @@
     <div id="main" class="d-flex">
         <!--左侧串口配置-->
         <div id="serial-options" class="col-auto m-0 bg-light sidebar">
-            <div class="collapse show p-2 float-start">
-                <div class="input-group mb-3">
-                    <span class="input-group-text">波特率</span>
-                    <input type="number" id="serial-baud" class="form-control" placeholder="选择波特率" value="115200"
-                        list="baud-list">
-                    <datalist id="baud-list">
-                        <option>110</option>
-                        <option>300</option>
-                        <option>600</option>
-                        <option>1200</option>
-                        <option>2400</option>
-                        <option>4800</option>
-                        <option>7200</option>
-                        <option>9600</option>
-                        <option>14400</option>
-                        <option>19200</option>
-                        <option>28800</option>
-                        <option>38400</option>
-                        <option>56000</option>
-                        <option>57600</option>
-                        <option>76800</option>
-                        <option>115200</option>
-                        <option>230400</option>
-                        <option>460800</option>
-                    </datalist>
-                </div>
-
-                <div class="input-group mb-3">
-                    <span class="input-group-text">数据位</span>
-                    <select class="form-select" id="serial-data-bits">
-                        <option>8</option>
-                        <option>7</option>
-                    </select>
-                </div>
-
-                <div class="input-group mb-3">
-                    <span class="input-group-text">停止位</span>
-                    <select class="form-select" id="serial-stop-bits">
-                        <option>1</option>
-                        <option>2</option>
-                    </select>
-                </div>
-
-                <div class="input-group mb-3">
-                    <span class="input-group-text">校验位</span>
-                    <select class="form-select" id="serial-parity">
-                        <Option value="none">None</Option>
-                        <Option value="even">Even</Option>
-                        <Option value="odd">Odd</Option>
-                    </select>
-                </div>
-
-                <div class="input-group mb-3">
-                    <span class="input-group-text">缓冲区</span>
-                    <input type="number" id="serial-buffer-size" class="form-control" placeholder="缓冲区大小"
-                        list="buffer-size-list" max="1677216" value="1024">
-                    <datalist id="buffer-size-list">
-                        <option>255</option>
-                        <option>512</option>
-                        <option>1024</option>
-                        <option>2048</option>
-                        <option>4096</option>
-                        <option>8192</option>
-                    </datalist>
-                </div>
-
-                <div class="input-group mb-3">
-                    <span class="input-group-text">流控制</span>
-                    <select class="form-select" id="serial-flow-control">
-                        <Option value="none">None</Option>
-                        <Option value="hardware">HardWare</Option>
-                    </select>
-                </div>
-
-                <div class="d-flex mt-2">
-                    <button class="btn btn-secondary me-3" id="serial-select-port">选择串口</button>
-                    <button class="btn btn-primary flex-grow-1" id="serial-open-or-close">打开串口</button>
-                </div>
-
-                <div id="serial-status" class="mt-2">
-                    <div class="alert alert-info" role="alert">
-                        未选择串口
-                    </div>
-                </div>
-            </div>
-            <button class="toggle-button float-end" title="隐藏/打开边栏">
-                <i class="bi bi-chevron-compact-left"></i>
-            </button>
-
+            <!-- The content of this div will be dynamically generated by JavaScript -->
         </div>
         <div class="clear"></div>
         <!--中间串口日志-->
@@ -358,6 +273,7 @@ setInterval(function(){
     </div>
     <script src="js/ansi_up.min.js"></script>
     <script src="js/common.js"></script>
+    <script src="js/serial-options.js"></script>
 
 </body>
 
